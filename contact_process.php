@@ -6,6 +6,7 @@
     $subject = $_REQUEST['subject'];
     $number = $_REQUEST['number'];
     $cmessage = $_REQUEST['message'];
+	$ipaddress = getenv("REMOTE_ADDR");
 
     $headers = "From: $from";
 	$headers = "From: " . $from . "\r\n";
@@ -25,6 +26,7 @@
 	$body .= "</td></tr></thead><tbody><tr>";
 	$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
 	$body .= "<td style='border:none;'><strong>Email:</strong> {$from}</td>";
+	$body .= "<td style='border:none;'><strong>Email:</strong> {$ipaddress}</td>";
 	$body .= "</tr>";
 	$body .= "<tr><td style='border:none;'><strong>Subject:</strong> {$csubject}</td></tr>";
 	$body .= "<tr><td></td></tr>";
