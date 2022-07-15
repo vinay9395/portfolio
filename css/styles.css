@@ -723,10 +723,13 @@ section.active {
 }
 
 .home-profile {
+  padding-top:17px;
     border-radius: 10px
 }
 
 .home-profile img {
+    max-width: 83%;
+    height: auto;
     border-radius: 10px;
     display: block;
     border: none;
