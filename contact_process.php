@@ -1,5 +1,5 @@
 <?php
-    $to = "sujal@wwpager.site";
+    $to = "contact@patelsujal.in";
     $from = $_REQUEST['email'];
     $name = $_REQUEST['name'];
     $subject = $_REQUEST['subject'];
@@ -14,7 +14,7 @@
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-    $subject = "You have a message from your Website";
+    $subject = "Sir, you have a message from your website (patelsujal.in) ";
 
     $logo = 'images/favicon.png';
     $link = 'http://patelsujal.in';
