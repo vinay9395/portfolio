@@ -1,12 +1,12 @@
 <?php
-
-    $to = "contact@patelsujal.in";
+    $to = "sujal@wwpager.site";
     $from = $_REQUEST['email'];
     $name = $_REQUEST['name'];
     $subject = $_REQUEST['subject'];
     $number = $_REQUEST['number'];
     $cmessage = $_REQUEST['message'];
-	$ipaddress = getenv("REMOTE_ADDR");
+    $ip = $_SERVER['REMOTE_ADDR'];
+  
 
     $headers = "From: $from";
 	$headers = "From: " . $from . "\r\n";
@@ -16,8 +16,8 @@
 
     $subject = "You have a message from your Website";
 
-    $logo = 'img/logo.png';
-    $link = '#';
+    $logo = 'images/favicon.png';
+    $link = 'http://patelsujal.in';
 
 	$body = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Express Mail</title></head><body>";
 	$body .= "<table style='width: 100%;'>";
@@ -26,7 +26,9 @@
 	$body .= "</td></tr></thead><tbody><tr>";
 	$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
 	$body .= "<td style='border:none;'><strong>Email:</strong> {$from}</td>";
-	$body .= "<td style='border:none;'><strong>Email:</strong> {$ipaddress}</td>";
+    $body .= "</tr>";
+	$body .= "<td style='border:none;'><strong>Ip:</strong> {$ip}</td>";
+
 	$body .= "</tr>";
 	$body .= "<tr><td style='border:none;'><strong>Subject:</strong> {$csubject}</td></tr>";
 	$body .= "<tr><td></td></tr>";
@@ -34,6 +36,12 @@
 	$body .= "</tbody></table>";
 	$body .= "</body></html>";
 
-    $send = mail($to, $subject, $body, $headers);
+    $send = mail($to, $subject, $body, $headers, $ip);
+header( "Location: https://iamsujal.in" ); 
+
+
+
+    
+
 
 ?>
