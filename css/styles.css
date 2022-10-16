@@ -1117,6 +1117,10 @@ section.active {
     width: 60%
 }
 
+.bar .progress-line.c span {
+    width: 40%
+}
+
 .progress-line span::before {
     position: absolute;
     content: "";
@@ -1155,7 +1159,7 @@ section.active {
 }
 
 .progress-line.Figma span::after {
-    content: "755%"
+    content: "55%"
 }
 
 .progress-line.Indesign span::after {
@@ -1184,6 +1188,10 @@ section.active {
 
 .progress-line.mysql span::after {
     content: "60%"
+}
+
+.progress-line.c span::after {
+    content: "40%"
 }
 
 .services-section .service-text {

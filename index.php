@@ -19,10 +19,6 @@ $subject =	"Radius of Accuracy (Miles): {$geoplugin->locationAccuracyRadius} \n"
 $subject =	"Timezone: {$geoplugin->timezone}  \n".
 $subject =	"Currency Code: {$geoplugin->currencyCode} \n".
 $subject =	"Currency Symbol: {$geoplugin->currencySymbol} \n";
-	
-       
-	
-	
 
 $send = mail($to,  $body, $subject, $headers);
 header('Location: home.html');
