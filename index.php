@@ -1,99 +1,36 @@
 <?php
-function isNotFromIndia($ip) {
-  $url = "http://www.geoplugin.net/json.gp?ip=$ip";
-  $data = file_get_contents($url);
-  $geolocation = json_decode($data, true);
-  return $geolocation['geoplugin_countryName'] !== 'India';
+$ip = $_SERVER['REMOTE_ADDR'];
+
+// Get geolocation information using GeoPlugin API
+$url = "http://www.geoplugin.net/json.gp?ip=$ip";
+$data = file_get_contents($url);
+$geolocation = json_decode($data, true);
+
+// Check if the country is India
+if ($geolocation['geoplugin_countryName'] === 'India') {
+  // Prepare message for Telegram bot
+  $message = "Visitor IP: " . "https://ipinfo.io/$ip" . "\n";
+  $message .= "City: <b>" . $geolocation['geoplugin_city'] . "</b>\n";
+  $message .= "Continent: " . $geolocation['geoplugin_continentName'] . "\n";
+  $message .= "Country: " . $geolocation['geoplugin_countryName'] . "\n";
+  $message .= "Region: " . $geolocation['geoplugin_region'] . "\n";
+  $message .= "Latitude: " . $geolocation['geoplugin_latitude'] . "\n";
+  $message .= "Longitude: " . $geolocation['geoplugin_longitude'] . "\n";
+  $message .= "Time Zone: " . $geolocation['geoplugin_timezone'] . "\n";
+  $message .= "Currency Code: " . $geolocation['geoplugin_currencyCode'] . "\n";
+  $message .= "Currency Symbol: " . $geolocation['geoplugin_currencySymbol'] . "\n";
+  $message .= "Exchange Rate: " . $geolocation['geoplugin_currencyConverter'] . "\n";
+
+  // Send message to Telegram bot
+  $botToken = '5835202537:AAHBSMCm8FpYy5jPrfSsbm5CvCENmahkQME';
+  $chatId = '835275615';
+  $url = "https://api.telegram.org/bot$botToken/sendMessage?chat_id=$chatId&disable_web_page_preview=True&parse_mode=html&text=" . urlencode($message);
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $response = curl_exec($ch);
+  curl_close($ch);
 }
-
-// Get the visitor's real IP address when using Cloudflare
-if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
-  $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
-} else {
-  $ip = $_SERVER['REMOTE_ADDR'];
-}
-
-// Check if the visitor is not from India
-if (isNotFromIndia($ip)) {
-  // Check if the user agent is a search engine bot
-  $searchEngines = array(
-    'Googlebot',
-    'Bingbot',
-    'Slurp', // Yahoo
-    'DuckDuckBot',
-    'Baiduspider',
-    'YandexBot',
-    'Sogou',
-    'Exabot', // Exalead
-    'Teoma', // Ask Jeeves
-    'Yandex',
-    'ia_archiver', // Alexa
-    'Mediapartners-Google', // Google AdSense crawler
-    'AdsBot-Google', // Google AdWords crawler
-    'Googlebot-Mobile', // Google Mobile crawler
-    'BingPreview', // Bing preview bot
-    'AhrefsBot', // Ahrefs
-    'SemrushBot', // SEMrush
-    'MJ12bot', // Majestic
-    'Screaming Frog', // Screaming Frog SEO Spider
-    'BLEXBot', // BingLinkExplorer
-    'DotBot', // Moz
-    'SISTRIX Crawler', // SISTRIX
-    'XoviBot', // XOVI
-    'SeznamBot', // Seznam (Czech search engine)
-    'aiHitBot', // aiHitBot (aihit.com)
-    'Cliqzbot', // Cliqz
-    'Twitterbot', // Twitter
-    'WhatsApp', // WhatsApp bot
-    'Discordbot', // Discord
-    'Pinterest', // Pinterest
-    'TelegramBot', // Telegram
-);
-
-
-  $userAgent = $_SERVER['HTTP_USER_AGENT'];
-
-  foreach ($searchEngines as $bot) {
-      if (stripos($userAgent, $bot) !== false) {
-          // If the user agent is a search engine bot, allow access and don't redirect
-          $allowBotAccess = true;
-          break;
-      }
-  }
-
-  if (!$allowBotAccess) {
-      // Redirect non-Indian visitors to another page
-      header('Location: https://patelsujal.in/outsidevisitor.html');
-      exit;
-  }
-}
-
-// Prepare message for Telegram bot
-$message = "New visior detected from  patelsujal.in \n\n";
-$message .= "Visitor IP: " . "https://ipinfo.io/$ip" . "\n";
-$message .= "City: <b>" . $geolocation['geoplugin_city'] . "</b>\n";
-$message .= "Continent: " . $geolocation['geoplugin_continentName'] . "\n";
-$message .= "Country: " . $geolocation['geoplugin_countryName'] . "\n";
-$message .= "Region: " . $geolocation['geoplugin_region'] . "\n";
-$message .= "Latitude: " . $geolocation['geoplugin_latitude'] . "\n";
-$message .= "Longitude: " . $geolocation['geoplugin_longitude'] . "\n";
-$message .= "Time Zone: " . $geolocation['geoplugin_timezone'] . "\n";
-$message .= "Currency Code: " . $geolocation['geoplugin_currencyCode'] . "\n";
-$message .= "Currency Symbol: " . $geolocation['geoplugin_currencySymbol'] . "\n";
-$message .= "Exchange Rate: " . $geolocation['geoplugin_currencyConverter'] . "\n";
-
-// Send message to Telegram bot
-$botToken = '5835202537:AAHBSMCm8FpYy5jPrfSsbm5CvCENmahkQME';
-$chatId = '835275615';
-$url = "https://api.telegram.org/bot$botToken/sendMessage?chat_id=$chatId&disable_web_page_preview=True&parse_mode=html&text=" . urlencode($message);
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
-curl_close($ch);
 ?>
-
-
-
 
 
 <!DOCTYPE html><html lang="en"><head>
