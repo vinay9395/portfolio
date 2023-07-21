@@ -723,10 +723,13 @@ section.active {
 }
 
 .home-profile {
+  padding-top:17px;
     border-radius: 10px
 }
 
 .home-profile img {
+    max-width: 83%;
+    height: auto;
     border-radius: 10px;
     display: block;
     border: none;
@@ -1075,23 +1078,23 @@ section.active {
 }
 
 .bar .progress-line.Photoshop span {
-    width: 70%
+    width: 50%
 }
 
 .bar .progress-line.Illustrator span {
-    width: 90%
+    width: 40%
 }
 
 .bar .progress-line.Figma span {
-    width: 75%
+    width: 55%
 }
 
 .bar .progress-line.Indesign span {
-    width: 80%
+    width: 85%
 }
 
 .bar .progress-line.Sketch span {
-    width: 70%
+    width: 25%
 }
 
 .bar .progress-line.html span {
@@ -1099,19 +1102,26 @@ section.active {
 }
 
 .bar .progress-line.css span {
-    width: 60%
+    width: 65%
 }
 
 .bar .progress-line.jquery span {
-    width: 85%
+    width: 40%
 }
 
 .bar .progress-line.python span {
-    width: 50%
+    width: 60%
 }
 
 .bar .progress-line.mysql span {
-    width: 70%
+    width: 60%
+}
+
+.bar .progress-line.c span {
+    width: 65%
+}
+.bar .progress-line.cplus span {
+    width: 40%
 }
 
 .progress-line span::before {
@@ -1144,23 +1154,23 @@ section.active {
 }
 
 .progress-line.Photoshop span::after {
-    content: "70%"
+    content: "50%"
 }
 
 .progress-line.Illustrator span::after {
-    content: "90%"
+    content: "40%"
 }
 
 .progress-line.Figma span::after {
-    content: "75%"
+    content: "55%"
 }
 
 .progress-line.Indesign span::after {
-    content: "80%"
+    content: "85%"
 }
 
 .progress-line.Sketch span::after {
-    content: "70%"
+    content: "25%"
 }
 
 .progress-line.html span::after {
@@ -1168,20 +1178,28 @@ section.active {
 }
 
 .progress-line.css span::after {
-    content: "60%"
+    content: "65%"
 }
 
 .progress-line.jquery span::after {
-    content: "85%"
+    content: "40%"
 }
 
 .progress-line.python span::after {
-    content: "50%"
+    content: "60%"
 }
 
 .progress-line.mysql span::after {
-    content: "70%"
+    content: "60%"
 }
+
+.progress-line.c span::after {
+    content: "65%"
+}
+.progress-line.cplus span::after {
+    content: "40%"
+}
+
 
 .services-section .service-text {
     margin-bottom: 30px

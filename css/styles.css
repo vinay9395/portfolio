@@ -1118,6 +1118,9 @@ section.active {
 }
 
 .bar .progress-line.c span {
+    width: 65%
+}
+.bar .progress-line.cplus span {
     width: 40%
 }
 
@@ -1191,8 +1194,12 @@ section.active {
 }
 
 .progress-line.c span::after {
+    content: "65%"
+}
+.progress-line.cplus span::after {
     content: "40%"
 }
+
 
 .services-section .service-text {
     margin-bottom: 30px
